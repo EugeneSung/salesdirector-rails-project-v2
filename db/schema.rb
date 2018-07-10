@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2018_07_10_150300) do
     t.string "address_2"
     t.string "state"
     t.string "zip"
+    t.string "city"
     t.string "phone"
     t.integer "user_id"
     t.datetime "created_at", null: false
@@ -25,7 +26,6 @@ ActiveRecord::Schema.define(version: 2018_07_10_150300) do
   end
 
   create_table "customers", force: :cascade do |t|
-    t.integer "cus_num"
     t.string "type"
     t.boolean "status"
     t.integer "user_id"
@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(version: 2018_07_10_150300) do
     t.string "password"
     t.string "password_digest"
     t.boolean "admin", default: false
+    t.string "user_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

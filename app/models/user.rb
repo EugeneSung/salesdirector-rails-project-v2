@@ -5,9 +5,15 @@ class User < ApplicationRecord
 
 
  has_secure_password
- validates :user_name, :password, presence: true
- validates :name_name, uniqueness: true
+ validates :username, :password, presence: true
+ validates :username, uniqueness: true
 
  accepts_nested_attributes_for :contacts, :allow_destroy => true
 
+ def emp_id
+   "EMP#{'%06d' % self.id}"
+ end
+ def cus_id
+   "CUS#{'%06d' % self.id}"
+ end
 end

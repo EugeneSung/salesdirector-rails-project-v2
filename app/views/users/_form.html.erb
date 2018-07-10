@@ -1,15 +1,12 @@
 
-<div class="w3-modal-content w3-animate-zoom" style="padding:32px">
-    <div class="w3-container w3-white w3-left">
-<h1>Create User</h1>
-<br /><br />
-
-<%= form_for(user, url: user_index_path) do |f| %>
+<%= form_for(user) do |f| %>
 
   <div class="field"> <%= f.label :username %><br>
   <%= f.text_field :username %></div>
   <div class="field"><%= f.label :password %><br>
   <%= f.text_field :password %></div>
+  <div class="field"><%= f.label :admin, value: "Check if you are an employee."  %>
+  <%= f.check_box :admin%></div>
   <br>
 
   <h3>Contacts</h3>
@@ -21,12 +18,14 @@
           <%= contact.text_field :address_1 %></li>
           <li><%= contact.label :address_2, value: "Address 2: " %>
           <%= contact.text_field :address_2 %></li>
+          <li><%= contact.label :city, value: "City: " %>
+          <%= contact.text_field :city %></li>
           <li><%= contact.label :state, value: "State: " %>
           <%= contact.text_field :state %></li>
           <li><%= contact.label :zip, value: "Zipcode: " %>
           <%= contact.text_field :zip %></li>
           <li><%= contact.label :phone, value: "Phone Number: " %>
-          <%= contact.number_field :phone %></li>
+          <%= contact.text_field :phone %></li>
         </p>
     <% end %>
 
@@ -34,5 +33,3 @@
   <div class="actions"><%= f.submit 'Submit', :class => 'btn btn-primary' %></div>
 
 <% end %>
-
-</div></div>

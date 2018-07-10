@@ -1,4 +1,4 @@
-class UserController < ApplicationController
+class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :require_login, only: [:show, :edit, :update, :destroy]
 
@@ -11,23 +11,28 @@ class UserController < ApplicationController
   end
 def show
 
-
-    if !current_user.admin
-      if current_salesman != @salesman
-        redirect_to root_path
-      end
-    end
 end
 def edit
 end
 def create
 
 
+
   @user = User.new(user_params)
+
+
   if(@user.valid? and @user.save)
+
         flash[:notice] = "User created successfully"
         session[:user_id] = @user.id
+        if @user.admin
+          @user.user_number = @user.emp_id
+        else
+          @user.user_number = @user.cus_id
+        end
+        @user.save
         redirect_to user_path(@user)
+
     else
         flash[:error] = @user.errors.full_messages.to_sentence
         redirect_to action: "new"
@@ -57,10 +62,9 @@ end
 private
 
 def user_params
-  params.require(:user).permit(:user_name, :password, :password_confirmation)
+  params.require(:user).permit(:username, :admin, :password, :password_confirmation, contacts_attributes: [:name, :address_1, :address_2, :phone, :city, :state, :zip])
 end
 def set_user
   @user = User.find(params[:id])
 end
-
 end

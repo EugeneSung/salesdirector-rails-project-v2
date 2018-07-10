@@ -1,0 +1,13 @@
+<ul>
+  <%= user.username %>
+  <%= user.user_number %>
+  <h4>contacts</h4>
+  <% user.contacts.each do |contact| %>
+    <%=contact.name%>
+  <%= contact.address_1%>
+  <%= contact.address_1%>
+  <%= contact.city%>
+  <%= contact.zip%>
+  <%= contact.phone%>
+  <%end%>
+</ul>
