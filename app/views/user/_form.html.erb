@@ -1,0 +1,38 @@
+
+<div class="w3-modal-content w3-animate-zoom" style="padding:32px">
+    <div class="w3-container w3-white w3-left">
+<h1>Create User</h1>
+<br /><br />
+
+<%= form_for(user, url: user_index_path) do |f| %>
+
+  <div class="field"> <%= f.label :username %><br>
+  <%= f.text_field :username %></div>
+  <div class="field"><%= f.label :password %><br>
+  <%= f.text_field :password %></div>
+  <br>
+
+  <h3>Contacts</h3>
+  <div class="field"><%= f.fields_for :contacts do |contact| %>
+      <%= contact.hidden_field(:user_id, :value => user.id)%>
+        <p><li><%= contact.label :name, value: "Name: " %>
+          <%= contact.text_field :name %></li>
+          <li><%= contact.label :address_1, value: "Address 1: " %>
+          <%= contact.text_field :address_1 %></li>
+          <li><%= contact.label :address_2, value: "Address 2: " %>
+          <%= contact.text_field :address_2 %></li>
+          <li><%= contact.label :state, value: "State: " %>
+          <%= contact.text_field :state %></li>
+          <li><%= contact.label :zip, value: "Zipcode: " %>
+          <%= contact.text_field :zip %></li>
+          <li><%= contact.label :phone, value: "Phone Number: " %>
+          <%= contact.number_field :phone %></li>
+        </p>
+    <% end %>
+
+    </div>
+  <div class="actions"><%= f.submit 'Submit', :class => 'btn btn-primary' %></div>
+
+<% end %>
+
+</div></div>

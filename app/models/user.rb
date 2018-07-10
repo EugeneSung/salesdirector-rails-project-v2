@@ -8,5 +8,6 @@ class User < ApplicationRecord
  validates :user_name, :password, presence: true
  validates :name_name, uniqueness: true
 
+ accepts_nested_attributes_for :contacts, :allow_destroy => true
 
 end

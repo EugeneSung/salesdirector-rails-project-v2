@@ -1,0 +1,17 @@
+
+<div class="w3-modal-content w3-animate-zoom" style="padding:32px">
+    <div class="w3-container w3-white w3-left">
+<h1>Welcome to the //Sales Director!</h1>
+<br /><br />
+<%= form_tag(signin_path) do %>
+
+  <label> User Name: </label>
+  <%= text_field_tag 'user_name' %>
+
+  <label> Password: </label>
+  <%= password_field_tag 'password' %>
+
+  <%= submit_tag "Sign in", class: "btn btn-large btn-primary" %>
+<% end -%>
+</div>
+</div>
