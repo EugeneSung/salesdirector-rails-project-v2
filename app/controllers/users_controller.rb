@@ -12,12 +12,7 @@ class UsersController < ApplicationController
     @user.customers.build
   end
 def show
-  if @user.admin
-    @user.employees << Employee.find_by(:user_id => @user.id)
 
-  else
-    @user.customers << Customer.find_by(:user_id => @user.id)
-  end
 end
 def edit
 end
@@ -32,12 +27,18 @@ def create
           employee = Employee.new
           employee.user_id = @user.id
           employee.user_number = @user.emp_id
+
+
           employee.save
+          session[:employee_id] = employee.id
         else
           customer = Customer.new
           customer.user_id = @user.id
           customer.user_number = @user.cus_id
+
+
           customer.save
+          session[:customer_id] = customer.id
         end
 
         flash[:notice] = "User created successfully"

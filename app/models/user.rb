@@ -8,7 +8,7 @@ class User < ApplicationRecord
  validates :username, :password, presence: true
  validates :username, uniqueness: true
 
- accepts_nested_attributes_for :contacts, :allow_destroy => true
+ accepts_nested_attributes_for :contacts, update_only: true
 
  def emp_id
    "EMP#{'%06d' % self.id}"
