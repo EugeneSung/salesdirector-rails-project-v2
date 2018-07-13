@@ -74,7 +74,7 @@ end
 private
 
 def user_params
-  params.require(:user).permit(:username, :admin, :password, :password_confirmation, contacts_attributes: [:name, :address_1, :address_2, :phone, :city, :state, :zip])
+  params.require(:user).permit(:username, :admin, :password, :password_confirmation, contacts_attributes: [:id, :name, :address_1, :address_2, :phone, :city, :state, :zip])
 end
 def set_user
   @user = User.find(params[:id])

@@ -1,10 +1,16 @@
 <ul>
-  <p>
+
+    <%if !user.status %>
+        <h4 style="color:red">Closed Account</h4>
+    <%end%>
+<p>
+
   <li><h5>Username: <%= user.username %></h5> </li>
 
   <%if current_employee %>
 
       <li>User Number: <%=current_employee.user_number%></li>
+
 <%end%>
   <%if current_customer %>
       <li>User Number: <%=current_customer.user_number%></li>
