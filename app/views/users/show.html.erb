@@ -5,7 +5,7 @@
 
 <%= render partial: "user", locals: {user: @user} %>
 <% if logged_in? && @user.admin %>
-  <p><%= link_to "Edit User", edit_user_path(@user) %></p>
+  <p><%= link_to "Edit User", edit_user_path(@user), :class=> "w3-bar-item w3-button"  %></p>
 <% end %>
 </div>
 </div>

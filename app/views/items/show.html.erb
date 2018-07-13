@@ -6,9 +6,9 @@
 <%= render partial: "item", locals: {item: @item} %>
 <% if logged_in? && current_user.admin %>
   <p>
-  <p><%= link_to "Add Item", new_item_path %> 
-    <%= link_to "Edit Item", edit_item_path(@item) %>
-     <%= link_to "Delete Product", item_path(@item), method: :delete %></p>
+  <p><%= link_to "Add Item", new_item_path, :class=> "w3-bar-item w3-button"  %>
+    <%= link_to "Edit Item", edit_item_path(@item), :class=> "w3-bar-item w3-button"  %>
+     <%= link_to "Delete Product", item_path(@item), method: :delete, :class=> "w3-bar-item w3-button"  %></p>
 
 <% end %>
 

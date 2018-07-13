@@ -2,11 +2,11 @@
 <p>Click <b style="color:green">Item Name</b> to see more details</p>
 <% @items.each do |item| %>
 
-        <li> <%= link_to "#{item.name}", item_path(item), {:class=> "w3-bar-item w3-button", :style=>"color:green; font-size:20px"}%>,
+        <li> <%= link_to "#{item.name}", item_path(item), {:class=> "w3-bar-item w3-button", :style=>"color:green; font-size:20px"}%>
         <br />
 
 
 <% end %>
 <% if current_user.admin %>
-  <p><%= link_to "Add Item", new_item_path %></p>
+  <p><%= link_to "Add Item", new_item_path, :class=> "w3-bar-item w3-button" %></p>
 <%end%>
