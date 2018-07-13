@@ -4,5 +4,8 @@
 <h1>User Info</h1>
 
 <%= render partial: "user", locals: {user: @user} %>
+<% if logged_in? && @user.admin %>
+  <p><%= link_to "Edit User", edit_user_path(@user) %></p>
+<% end %>
 </div>
 </div>

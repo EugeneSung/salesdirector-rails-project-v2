@@ -1,13 +1,23 @@
 <ul>
-  <%= user.username %>
-  <%= user.user_number %>
-  <h4>contacts</h4>
+  <p>
+  <li><h5>Username: <%= user.username %></h5> </li>
+
+  <%if user.admin %>
+    <% user.employees.each do |employee| %>
+      <li>User Number: <%=employee.user_number%></li>
+    <%end%>
+  <%else%>
+    <% user.customers.each do |customer| %>
+      <li>User Number: <%=customer.user_number%></li>
+    <%end%>
+<%end%>
   <% user.contacts.each do |contact| %>
-    <%=contact.name%>
-  <%= contact.address_1%>
-  <%= contact.address_1%>
-  <%= contact.city%>
-  <%= contact.zip%>
-  <%= contact.phone%>
+  <li>Name: <%=contact.name%></li>
+  <li>Address 1: <%= contact.address_1%></li>
+  <li>Address 2: <%= contact.address_1%></li>
+  <li>City: <%= contact.city%></li>
+  <li>Zipcode: <%= contact.zip%></li>
+  <li>Phone Number: <%= contact.phone%></li>
   <%end%>
+  <p>
 </ul>

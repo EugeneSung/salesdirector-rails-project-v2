@@ -1,12 +1,18 @@
 
 <%= form_for(user) do |f| %>
 
+
+
+
   <div class="field"> <%= f.label :username %><br>
   <%= f.text_field :username %></div>
   <div class="field"><%= f.label :password %><br>
   <%= f.text_field :password %></div>
   <div class="field"><%= f.label :admin, value: "Check if you are an employee."  %>
-  <%= f.check_box :admin%></div>
+  <%= f.check_box :admin%>
+
+
+  </div>
   <br>
 
   <h3>Contacts</h3>
@@ -28,8 +34,11 @@
           <%= contact.text_field :phone %></li>
         </p>
     <% end %>
-
     </div>
+
+
+
+
   <div class="actions"><%= f.submit 'Submit', :class => 'btn btn-primary' %></div>
 
 <% end %>

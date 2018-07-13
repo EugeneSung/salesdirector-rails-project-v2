@@ -26,8 +26,9 @@ ActiveRecord::Schema.define(version: 2018_07_10_150300) do
   end
 
   create_table "customers", force: :cascade do |t|
+    t.string "user_number"
     t.string "type"
-    t.boolean "status"
+    t.boolean "status", default: true
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -35,8 +36,9 @@ ActiveRecord::Schema.define(version: 2018_07_10_150300) do
 
   create_table "employees", force: :cascade do |t|
     t.string "title"
-    t.boolean "status"
+    t.boolean "status", default: true
     t.integer "user_id"
+    t.string "user_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

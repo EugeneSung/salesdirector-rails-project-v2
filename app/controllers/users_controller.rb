@@ -8,9 +8,16 @@ class UsersController < ApplicationController
   def new
     @user = User.new
     @user.contacts.build
+    @user.employees.build
+    @user.customers.build
   end
 def show
+  if @user.admin
+    @user.employees << Employee.find_by(:user_id => @user.id)
 
+  else
+    @user.customers << Customer.find_by(:user_id => @user.id)
+  end
 end
 def edit
 end
@@ -20,17 +27,21 @@ def create
 
   @user = User.new(user_params)
 
-
   if(@user.valid? and @user.save)
+        if @user.admin
+          employee = Employee.new
+          employee.user_id = @user.id
+          employee.user_number = @user.emp_id
+          employee.save
+        else
+          customer = Customer.new
+          customer.user_id = @user.id
+          customer.user_number = @user.cus_id
+          customer.save
+        end
 
         flash[:notice] = "User created successfully"
         session[:user_id] = @user.id
-        if @user.admin
-          @user.user_number = @user.emp_id
-        else
-          @user.user_number = @user.cus_id
-        end
-        @user.save
         redirect_to user_path(@user)
 
     else

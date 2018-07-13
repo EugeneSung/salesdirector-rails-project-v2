@@ -1,0 +1,11 @@
+<div class="w3-modal-content w3-animate-zoom" style="padding:32px">
+    <div class="w3-container w3-white w3-left">
+<%= form_tag(new_employee_path) do %>
+  <h5>additional info</h5>
+  <label> Title: </label>
+  <%= text_field_tag 'title' %>
+  <%= hidden_field_tag (:user_id, :value => current_user.id)%>
+  <%= submit_tag "Submit", class: "btn btn-large btn-primary" %>
+<% end %>
+</div>
+</div>
