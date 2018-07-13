@@ -70,7 +70,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     <%= link_to 'Order Now', new_user_order_path(current_user), :class=> "w3-bar-item w3-button" %>
     <%= link_to 'Orders ', user_orders_path(current_user), :class=> "w3-bar-item w3-button" %>
     <%= link_to 'Items ', items_path, :class=> "w3-bar-item w3-button" %>
-    <% if logged_in? %>
+    <% if current_user.admin %>
       <%= link_to 'Customers', customers_path, :class=> "w3-bar-item w3-button" %>
     <%end%>
   <%end%>

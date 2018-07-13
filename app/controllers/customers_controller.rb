@@ -1,4 +1,10 @@
 class CustomersController < ApplicationController
+
+  before_action :require_admin, only: [:show, :edit, :update, :destroy, :index]
+  def index
+    @customers = Customer.all
+
+  end
   def new
     @customer = Customer.find(params[:id])
   end
