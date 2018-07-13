@@ -1,0 +1,26 @@
+
+<%= form_for(item) do |f| %>
+
+
+
+
+  <div class="field"> <%= f.label :name, :value => "Name: "  %><br>
+  <%= f.text_field :name %></div>
+  <div class="field"><%= f.label :item_type, :value => "Type: "  %><br>
+  <%= f.text_field :item_type %></div>
+  <div class="field"> <%= f.label :desc, :value => "Description: " %><br>
+  <%= f.text_field :desc %></div>
+  <div class="field"><%= f.label :price, :value => "Price: "  %><br>
+  <%= f.number_field :price %></div>
+  <div class="field"><%= f.label :inventory, :value => "Inventory: "  %><br>
+  <%= f.number_field :inventory %></div>
+
+  <br>
+
+
+
+
+
+  <div class="actions"><%= f.submit 'Submit', :class => 'btn btn-primary' %></div>
+
+<% end %>
