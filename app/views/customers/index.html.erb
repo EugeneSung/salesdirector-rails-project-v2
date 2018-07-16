@@ -1,10 +1,17 @@
+<div class="w3-modal-content w3-animate-zoom" style="padding:32px">
+    <div class="w3-container w3-white w3-left">
+
+
 <h3>Customer Lists</h3>
 <p>Click <b style="color:green">Business Name</b> to see more details</p>
 <% @customers.each do |customer| %>
 
-        <li> <%= link_to "#{customer.contact(customer.user).name}", user_path(customer.user), {:class=> "w3-bar-item w3-button", :style=>"color:green; font-size:20px"}%> 
+        <li> <%= link_to "#{customer.contact(customer.user).name}", user_path(customer.user), {:class=> "w3-bar-item w3-button", :style=>"color:green; font-size:20px"}%>
         <%= customer.contact(customer.user).state%></li>
         <br />
 
 
 <% end %>
+
+</div>
+</div>

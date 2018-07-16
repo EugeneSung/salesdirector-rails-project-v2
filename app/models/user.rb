@@ -16,4 +16,7 @@ class User < ApplicationRecord
  def cus_id
    "CUS#{'%06d' % self.id}"
  end
+ def contact(user)
+   Contact.find_by(:user_id=>user.id)
+ end
 end

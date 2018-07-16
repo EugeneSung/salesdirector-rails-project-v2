@@ -26,7 +26,10 @@
   }
 
   // Click on the "Jeans" link on page load to open the accordion for demo purposes
-  document.getElementById("myBtn").click();
+  document.getElementById("myBtn1").click();
+  document.getElementById("myBtn2").click();
+  document.getElementById("myBtn3").click();
+  document.getElementById("myBtn4").click();
 
 
   // Script to open and close sidebar
@@ -62,6 +65,8 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 
   </div>
   <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
+    
+
 
   <% if logged_in? %>
     <%= link_to 'Order Now', new_user_order_path(current_user), :class=> "w3-bar-item w3-button", :style=>"color:blue" %>
@@ -70,6 +75,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     <%= link_to 'Items ', items_path, :class=> "w3-bar-item w3-button" %>
     <% if current_user.admin %>
       <%= link_to 'Customers', customers_path, :class=> "w3-bar-item w3-button" %>
+      <%= link_to 'Users', users_path, :class=> "w3-bar-item w3-button" %>
     <%end%>
   <%end%>
 

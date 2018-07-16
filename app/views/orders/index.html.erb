@@ -1,0 +1,18 @@
+
+<div class="w3-modal-content w3-animate-zoom" style="padding:32px">
+    <div class="w3-container w3-white w3-left">
+
+<h3>Item Lists</h3>
+<p>Click <b style="color:green">Order Number</b> to see more details</p>
+<% @orders.each do |order| %>
+
+        <li> <%= link_to "#{order.name}", order_path(item), {:class=> "w3-bar-item w3-button", :style=>"color:green; font-size:20px"}%>
+        <br />
+
+
+<% end %>
+<% if current_user.admin %>
+  <p><%= link_to "Add Order", new_order_path, :class=> "w3-bar-item w3-button" %></p>
+<%end%>
+</div>
+</div>
