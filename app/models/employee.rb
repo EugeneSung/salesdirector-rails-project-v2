@@ -8,4 +8,7 @@ class Employee < ApplicationRecord
   def name
     Contact.find_by_user_id(self.user_id).name
   end
+  def self.find_by_user_id(user_id)
+    self.all.detect {|s| user_id == s.user_id}
+  end
 end

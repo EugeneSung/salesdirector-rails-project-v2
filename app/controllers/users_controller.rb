@@ -8,8 +8,7 @@ class UsersController < ApplicationController
   def new
     @user = User.new
     @user.contacts.build
-    @user.employees.build
-    @user.customers.build
+
   end
 def show
 
@@ -26,23 +25,23 @@ def create
         if @user.admin
           employee = Employee.new
           employee.user_id = @user.id
-          employee.user_number = @user.emp_id
-
-
+          employee.user_number = @user.user_number?
+          @user.user_number = @user.user_number?
           employee.save
+
           session[:employee_id] = employee.id
         else
           customer = Customer.new
           customer.user_id = @user.id
-          customer.user_number = @user.cus_id
-
-
+          customer.user_number = @user.user_number?
+          @user.user_number = @user.user_number?
           customer.save
           session[:customer_id] = customer.id
         end
 
         flash[:notice] = "User created successfully"
         session[:user_id] = @user.id
+        @user.save
         redirect_to user_path(@user)
 
     else

@@ -54,9 +54,9 @@ ActiveRecord::Schema.define(version: 2018_07_10_150300) do
   end
 
   create_table "line_items", force: :cascade do |t|
-    t.integer "quantity"
     t.integer "order_id"
     t.integer "item_id"
+    t.integer "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -64,7 +64,6 @@ ActiveRecord::Schema.define(version: 2018_07_10_150300) do
   create_table "orders", force: :cascade do |t|
     t.integer "order_num"
     t.integer "total"
-    t.boolean "status"
     t.integer "customer_id"
     t.integer "employee_id"
     t.datetime "created_at", null: false

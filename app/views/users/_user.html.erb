@@ -6,16 +6,8 @@
 <p>
 
   <li><h5>Username: <%= user.username %></h5> </li>
+  <li>User Number: <%= user.user_number %></li>
 
-  <%if current_employee %>
-
-      <li>User Number: <%=current_employee.user_number%></li>
-
-<%end%>
-  <%if current_customer %>
-      <li>User Number: <%=current_customer.user_number%></li>
-
-<%end%>
   <% user.contacts.each do |contact| %>
   <li>Name: <%=contact.name%></li>
   <li>Address 1: <%= contact.address_1%></li>

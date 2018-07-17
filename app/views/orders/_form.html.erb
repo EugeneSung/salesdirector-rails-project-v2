@@ -1,35 +1,41 @@
 
-
 <%= form_for(order) do |f| %>
-  <br />
 
-    <% if order.employee_id%>
-    <div class="field"><%= f.label :employee_id, value: "Salesman: " %>
-    <%= f.collection_select(:employee_id, Employee.all, :id, :name, {:selected => order.employee_id} ) %></div>
-      <div class="field"><%= f.label :customer_id, value: "Customer: " %>
-      <%= f.collection_select(:customer_id, Customer.all, :id, :name) %></div>
-    <% else %>
-      <div class="field"><%= f.label :employee_id, value: "Salesman: " %>
-      <%= f.collection_select(:employee_id, Employee.all, :id, :id) %></div>
-      <div class="field"><%= f.label :customer_id, value: "Customer: " %>
-      <%= f.collection_select(:customer_id, Customer.all, :id, :id, {:selected => order.customer_id}) %></div>
-    <% end %>
+<div class="field"> <%= f.label :order_num, value: "Order Number: " %>
+<%= f.number_field :order_num %></div>
+ <div class="field"><%= f.label :employee_id, value: "Salesman: " %>
+<%= f.collection_select(:employee_id, Employee.all, :id, :name) %></div>
+<div class="field"><%= f.label :customer_id, value: "Customer: " %>
+<%= f.collection_select(:customer_id, Customer.all, :id, :name) %></div>
 
 
-  <h3>Orders</h3>
+<table style="border-spacing: 5px;">
+
+  <tr>
+    <th>Item Name</th>
+    <th>Quantity</th>
+<tr>
+<tr class="spacer"><td></td></tr>
+      <%= f.fields_for :line_items do |line_item| %>
+      <br /></br />
+    <tr>
+
+        <%= line_item.hidden_field(:order_id, :value => order.id)%>
+        <td>
+         <%= line_item.collection_select(:item_id, Item.all, :id, :name) %> </td>
+        <td>
+        <%= line_item.number_field :quantity %></td>
 
 
-  <div class="field"><%= f.fields_for :line_items do |line_item| %>
-    <%= line_item.hidden_field(:order_id, :value => order.id)%>
-    <p><%= line_item.label :item_id, value: "Item: " %>
-      <%= line_item.collection_select(:item_id, Item.all, :id, :name) %> -
-      <%= line_item.label :quantity, value: "Quantity: " %>
-      <%= line_item.number_field :quantity %>
-    </p>
-  <% end %>
-</div>
-  <br /><br />
-  <div class="actions"><%= f.submit 'Submit', :class => 'btn btn-primary' %></div>
+      </tr>
+      <% end %>
+
+
+<tr class="spacer"><td></td></tr>
+</table>
+  <div><%= f.submit 'Submit', :class => 'btn btn-primary' %></div>
+
+
 <br /><br />
 
-<% end %>
+  <% end %>

@@ -1,0 +1,17 @@
+<ul>
+<p>
+
+  <li><h5>Order Number: <%= order.order_num %></h5> </li>
+  <li>Salesman Name: <%= order.employee.name%></li>
+  <li>Customer: <%= order.customer.name%></li>
+
+  <li>Order List</li>
+    <% order.line_items.each do |line_item| %>
+    <ul>
+
+      item: <%= line_item.item.name %>, qty: <%= line_item.quantity %>, sum: $<%= line_item.item.price * line_item.quantity%>
+    </ul>
+    <%end%>
+    <li>Total : $<%= order.sum %> </li>
+</p>
+</ul>

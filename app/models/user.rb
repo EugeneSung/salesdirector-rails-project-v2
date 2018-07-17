@@ -10,12 +10,15 @@ class User < ApplicationRecord
 
  accepts_nested_attributes_for :contacts, update_only: true
 
- def emp_id
-   "EMP#{'%06d' % self.id}"
+ def user_number?
+   if self.admin
+    "EMP#{'%06d' % self.id}"
+  else
+    "CUS#{'%06d' % self.id}"
+  end
+
  end
- def cus_id
-   "CUS#{'%06d' % self.id}"
- end
+
  def contact(user)
    Contact.find_by(:user_id=>user.id)
  end

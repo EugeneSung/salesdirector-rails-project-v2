@@ -10,13 +10,15 @@ class OrdersController < ApplicationController
       @order = Order.new
       if User.find_by_id(params[:user_id]).admin
         @order.employee_id = params[:user_id]
-          
+
       else
         @order.customer_id = params[:user_id]
       end
-      5.times {@order.line_items.build}
 
-    end
+    5.times do
+           @order.line_items.build
+         end
+  end
   def show
 
   end
