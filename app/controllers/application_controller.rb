@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  helper_method :current_user, :require_login, :logged_in?, :current_employee, :current_customer
+  helper_method :current_user, :require_login, :logged_in?, :current_employee, :current_user_type
 
   # def cart
   #   session[:cart] ||= []
@@ -13,11 +13,15 @@ class ApplicationController < ActionController::Base
   def current_user
    @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
   end
-  def current_employee
-   @current_employee ||= Employee.find_by(id: session[:employee_id]) if session[:employee_id]
-  end
-  def current_customer
-   @current_customer ||= Customer.find_by(id: session[:customer_id]) if session[:customer_id]
+
+  def current_user_type
+
+    if current_user.admin
+      @user_type = Employee.find_by(user_id: current_user.id)
+    else
+      @user_type = Customer.find_by(user_id: current_user.id)
+    end
+
   end
 
   def logged_in?

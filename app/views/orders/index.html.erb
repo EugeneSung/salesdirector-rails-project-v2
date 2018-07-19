@@ -5,14 +5,15 @@
 <h3>Item Lists</h3>
 <p>Click <b style="color:green">Order Number</b> to see more details</p>
 <% @orders.each do |order| %>
+        <%if current_user.id == order.customer.user_id || current_user.id == order.employee.user_id %>
 
-        <li> <%= link_to "#{order.name}", order_path(item), {:class=> "w3-bar-item w3-button", :style=>"color:green; font-size:20px"}%>
+        <li> <%= link_to "#{order.order_num}", user_order_path(current_user_type, order.id), {:class=> "w3-bar-item w3-button", :style=>"color:green; font-size:20px"}%></li>
         <br />
-
+        <%end%>
 
 <% end %>
-<% if current_user.admin %>
-  <p><%= link_to "Add Order", new_order_path, :class=> "w3-bar-item w3-button" %></p>
-<%end%>
+
+  <p><%= link_to "Add Order", new_user_order_path(current_user), :class=> "w3-bar-item w3-button" %></p>
+
 </div>
 </div>

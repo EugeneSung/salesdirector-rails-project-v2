@@ -5,8 +5,8 @@ class Order < ApplicationRecord
   belongs_to :employee
   has_many :line_items
   has_many :items, through: :line_items
-  validates :order_num, :employee_id, :customer_id, presence: true
-  validates :order_num, uniqueness: true
+  validates :employee_id, :customer_id, presence: true
+  
   accepts_nested_attributes_for :line_items, :allow_destroy => true
 
   def sum
@@ -14,7 +14,10 @@ class Order < ApplicationRecord
 
     if self.line_items.empty? != true
       self.line_items.each do |line_item|
-        total = total + (line_item.item.price * line_item.quantity)
+        if !!line_item.quantity
+          total = total + (line_item.item.price * line_item.quantity)
+        end
+
       end
 
     else

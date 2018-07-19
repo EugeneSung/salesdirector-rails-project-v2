@@ -7,14 +7,16 @@ class OrdersController < ApplicationController
       @orders = Order.all
     end
     def new
+
+
+
       @order = Order.new
-      if User.find_by_id(params[:user_id]).admin
-        @order.employee_id = params[:user_id]
 
+      if Order.all.empty?
+        @order_number = "ORD#{'%06d' %  1 }"
       else
-        @order.customer_id = params[:user_id]
+        @order_number = "ORD#{'%06d' % (Order.all.last.id + 1)}"
       end
-
     5.times do
            @order.line_items.build
          end

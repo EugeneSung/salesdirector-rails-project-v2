@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 2018_07_10_150300) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "order_num"
+    t.string "order_num"
     t.integer "total"
     t.integer "customer_id"
     t.integer "employee_id"
