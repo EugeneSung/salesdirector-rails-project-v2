@@ -7,9 +7,9 @@
 
         <li> <%= link_to "#{user.username}", user_path(user), {:class=> "w3-bar-item w3-button", :style=>"color:green; font-size:20px"}%>
           <%if user.admin %>
-            <div style="color:red"> - employee</div>
-            <%else%>
-          <div style="color:red"> - customer</div>
+            employee
+          <%else%>
+          customer
 
           <%end%>
 

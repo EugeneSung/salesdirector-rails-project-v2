@@ -11,9 +11,10 @@ class UsersController < ApplicationController
 
   end
 def show
-
+  @user.contacts.build if @user.contacts.empty?
 end
 def edit
+
 end
 def create
 
@@ -67,6 +68,30 @@ def destroy
   respond_to do |format|
     format.html { redirect_to user_url, notice: 'User was successfully destroyed.' }
   end
+end
+
+def disable
+
+  @user = User.find_by(:id => params[:id])
+  if @user.admin
+    flash[:notice] = 'Yor are not able to disable a status of employees'
+  else
+    @user.update_column(:status, false)
+  end
+
+  redirect_to user_path(@user)
+
+end
+def enable
+
+  @user = User.find_by(:id => params[:id])
+  if @user.admin
+    flash[:notice] = 'Yor are not able to disable a status of employees'
+  else
+    @user.update_column(:status, true)
+  end
+
+  redirect_to user_path(@user)
 end
 
 

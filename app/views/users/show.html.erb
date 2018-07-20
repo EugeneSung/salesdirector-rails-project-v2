@@ -4,9 +4,16 @@
 <h2>User Info</h2>
 
 <%= render partial: "user", locals: {user: @user} %>
+<div> <%= link_to "Edit User", edit_user_path(@user), :class=> "w3-bar-item w3-button"  %></div>
 <% if current_user.admin %>
 
-  <p><%= link_to "Edit User", edit_user_path(@user), :class=> "w3-bar-item w3-button"  %></p>
+  <div>
+  <% if @user.status %>
+    <%= button_to "Disable User", disable_path, method: :post, :class=> "w3-bar-item w3-button"  %>
+  <% else %>
+    <%= button_to "Enable User", enable_path, method: :post, :class=> "w3-bar-item w3-button"  %>
+  <%end%>
+  </div>
 <% end %>
 </div>
 </div>

@@ -6,7 +6,21 @@ class SessionsController < ApplicationController
     @user = User.new
   end
 
+  def om_create
+    user = User.from_omniauth(request.env["omniauth.auth"])
+    
+    if user
+      session[:user_id] = user.id
+      flash[:notice] = 'Signed in successfully.'
+    else
+      flash[:notice] = 'Signin failed'
+    end
+    redirect_to root_path
+  end
+
+
 def create
+
 
   @user = User.find_by(username: params[:username])
   if @user && @user.authenticate(params[:password])
@@ -33,9 +47,7 @@ end
 def destroy
 
   session[:user_id] = nil
-  session[:customer_id] = nil
-  session[:employee_id] = nil
   reset_session
-  redirect_to root_url, notice: "Logged out"
+  redirect_to root_path, notice: "Logged out"
 end
 end

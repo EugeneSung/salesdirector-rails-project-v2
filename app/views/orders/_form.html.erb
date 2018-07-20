@@ -8,7 +8,8 @@
 <div class="field"><%= f.label :customer_id, value: "Customer: " %>
 <%= f.collection_select(:customer_id, Customer.all, :id, :name) %></div>
 
-
+<br />
+<br/>
 <table style="border-spacing: 5px;">
 
   <tr>
@@ -17,7 +18,7 @@
 <tr>
 <tr class="spacer"><td></td></tr>
       <%= f.fields_for :line_items do |line_item| %>
-      <br /></br />
+
     <tr>
 
         <%= line_item.hidden_field(:order_id, :value => order.id)%>

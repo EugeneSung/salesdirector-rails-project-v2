@@ -4,7 +4,7 @@
 <h1>Item Info</h1>
 
 <%= render partial: "item", locals: {item: @item} %>
-<% if logged_in? && current_user.admin %>
+<% if current_user.admin %>
   <p>
   <p><%= link_to "Add Item", new_item_path, :class=> "w3-bar-item w3-button"  %>
     <%= link_to "Edit Item", edit_item_path(@item), :class=> "w3-bar-item w3-button"  %>
