@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
 
   def om_create
     user = User.from_omniauth(request.env["omniauth.auth"])
-    
+
     if user
       session[:user_id] = user.id
       flash[:notice] = 'Signed in successfully.'
@@ -45,7 +45,10 @@ def create
 end
 
 def destroy
-
+  user = User.find_by(id: current_user.id)
+  if user.uid
+    user.destroy
+  end
   session[:user_id] = nil
   reset_session
   redirect_to root_path, notice: "Logged out"

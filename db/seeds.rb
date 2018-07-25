@@ -37,8 +37,8 @@ item6 = Item.create(name: "Jewel6", price: 120, desc: "Nice", inventory: 110, it
 
 
 
-order1 = Order.create(order_num: "ORD000001", employee: employee_1, customer: customer_1, total:81)
-order2 = Order.create(order_num: "ORD000002" , employee: employee_2, customer: customer_3, total:671)
+order1 = Order.create(order_num: "ORD000001", employee: employee_1, customer: customer_1, total: 81)
+order2 = Order.create(order_num: "ORD000002" , employee: employee_2, customer: customer_3, total: 871)
 
 line_item1 = LineItem.create(order: order1, item: item1, quantity: 1)
 line_item2 = LineItem.create(order: order1, item: item2, quantity: 1)

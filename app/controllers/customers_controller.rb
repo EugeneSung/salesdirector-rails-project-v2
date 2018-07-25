@@ -19,10 +19,13 @@ class CustomersController < ApplicationController
 
     else
 
-          redirect_to action: "new"
+          redirect_to new_user_path
     end
 
   end
+
+
+
 
 
   private

@@ -3,9 +3,19 @@ class UsersController < ApplicationController
   before_action :require_login, only: [:show, :edit, :update, :destroy]
 
   def index
-    @users = User.all
+
+
+      @users = User.all
+
   end
+  def most_orders
+    
+  end
+
+
   def new
+
+
     @user = User.new
     @user.contacts.build
 
@@ -103,4 +113,5 @@ end
 def set_user
   @user = User.find(params[:id])
 end
+
 end

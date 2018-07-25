@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
+    get '/orders/big_orders', to: 'orders#big_orders'
     resources :users do
       resources :orders
     end
@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     get 'auth/failure', to: redirect('/')
 
 
-    namespace :admin do
-     resources :preferences
-   end
+
+
+
 end

@@ -9,6 +9,7 @@ class User < ApplicationRecord
  validates :username, uniqueness: true
 
  accepts_nested_attributes_for :contacts, update_only: true
+ 
 
  def self.from_omniauth(auth)
      where(provider: auth.provider, uid: auth.uid).first_or_initialize.tap do |user|

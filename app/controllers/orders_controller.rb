@@ -1,8 +1,13 @@
 class OrdersController < ApplicationController
 
-    before_action :set_order, only: [:show, :edit, :update, :destroy]
+    before_action :set_order, only: [:edit, :update, :destroy]
     before_action :require_admin, only: [:destroy]
 
+    def big_orders
+      
+      @big_orders = Order.totals
+      render 'big_orders'
+    end
     def index
       @orders = Order.all
     end
@@ -22,7 +27,7 @@ class OrdersController < ApplicationController
          end
   end
   def show
-
+    @order = Order.find(params[:id])
   end
   def edit
   end

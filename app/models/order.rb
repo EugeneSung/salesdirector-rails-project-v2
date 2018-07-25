@@ -6,8 +6,13 @@ class Order < ApplicationRecord
   has_many :line_items
   has_many :items, through: :line_items
   validates :employee_id, :customer_id, presence: true
-  
+
   accepts_nested_attributes_for :line_items, :allow_destroy => true
+  scope :ordered_employees, -> { group(:employee_id)}
+  scope :ordered_customers, -> { group(:customer_id)}
+  scope :totals, -> { group(:total)}
+  scope :total_max, -> {order(:total, :desc) }
+  scope :big_orders, -> {totals.total_max.limit(3)}
 
   def sum
     total = 0

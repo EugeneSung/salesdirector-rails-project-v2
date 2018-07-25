@@ -20,6 +20,9 @@
 <% end %>
 
   <p><%= link_to "Add Order", new_user_order_path(current_user), :class=> "w3-bar-item w3-button" %></p>
+<% if current_user.admin %>
+  <p><%= link_to "See Big orders list", orders_big_orders_path, :class=> "w3-bar-item w3-button" %></p>
+<% end %>
 
 </div>
 </div>

@@ -5,9 +5,6 @@
 <h2>Order Info</h2>
 
 <%= render partial: "order", locals: {order: @order} %>
-<% if current_user.admin %>
 
-  <div><%= link_to "Create Invoice", new_invoice_path, :class=> "w3-bar-item w3-button"  %></div>
-<%end%>
 </div>
 </div>
