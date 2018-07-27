@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
     before_action :require_admin, only: [:destroy]
 
     def big_orders
-      
+
       @big_orders = Order.totals
       render 'big_orders'
     end
@@ -72,7 +72,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:order_num, :total, :customer_id, :employee_id, line_items_attributes: [:id, :quantity, :order_id, :item_id])
+    params.require(:order).permit(:order_num, :order_total, :customer_id, :employee_id, line_items_attributes: [:id, :quantity, :order_id, :item_id])
   end
   def set_order
     @order = Order.find(params[:id])

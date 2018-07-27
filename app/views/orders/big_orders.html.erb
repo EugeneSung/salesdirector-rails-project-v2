@@ -5,7 +5,7 @@
 <h3>Big Orders</h3>
 <p>Click <b style="color:green">Order Number</b> to see more details</p>
   <%@big_orders.each do |big_order| %>
-    <li><%= link_to "#{big_order.order_num}", order_path(big_order), {:class=> "w3-bar-item w3-button", :style=>"color:green; font-size:20px"} %>,  $<%=big_order.total%></li>
+    <li><%= link_to "#{big_order.order_num}", order_path(big_order), {:class=> "w3-bar-item w3-button", :style=>"color:green; font-size:20px"} %>,  $<%=big_order.order_total%></li>
   <%end%>
 
 
