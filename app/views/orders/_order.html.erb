@@ -13,14 +13,14 @@
     <th>Item Name</th>
     <th>Quantity</th>
     <th>Sum</th>
-<tr>
+</tr>
 
 
 
 <tr class="spacer"><td></td></tr>
     <% order.line_items.each do |line_item| %>
-<% if !!line_item.quantity %>
-    <tr>
+    <% if !!line_item.quantity %>
+      <tr>
 
         <td align="center">
           <%= line_item.item.name %>
@@ -34,5 +34,6 @@
 
       </tr>
       <% end %>
-        <% end %>
+    <% end %>
         <tr><td>Total : $<%= order.sum %></td> </tr>
+</table>

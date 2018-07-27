@@ -5,6 +5,7 @@
 <h2>Order Info</h2>
 
 <%= render partial: "order", locals: {order: @order} %>
-
+<br />
+<%= link_to "Edit Order", edit_order_path(@order), :class=> "w3-bar-item w3-button"  %>
 </div>
 </div>

@@ -7,7 +7,7 @@
 <% @orders.each do |order| %>
         <%if current_user.id == order.customer.user_id || current_user.id == order.employee.user_id %>
 
-        <li> <%= link_to "#{order.order_num}", user_order_path(current_user_type, order.id), {:class=> "w3-bar-item w3-button", :style=>"color:green; font-size:20px"}%>
+        <li> <%= link_to "#{order.order_num}", order_path(order), {:class=> "w3-bar-item w3-button", :style=>"color:green; font-size:20px"}%>
             Salesman: <%= order.employee.name%>, Customer: <%= order.customer.name%></li>
 
 
@@ -19,7 +19,7 @@
 
 <% end %>
 
-  <p><%= link_to "Add Order", new_user_order_path(current_user), :class=> "w3-bar-item w3-button" %></p>
+  <p><%= link_to "Add Order", new_order_path, :class=> "w3-bar-item w3-button" %></p>
 <% if current_user.admin %>
   <p><%= link_to "See Big orders list", orders_big_orders_path, :class=> "w3-bar-item w3-button" %></p>
 <% end %>

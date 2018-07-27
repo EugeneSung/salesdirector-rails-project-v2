@@ -78,9 +78,9 @@ table {
 
 
   <% if logged_in? %>
-    <%= link_to 'Order Now', new_user_order_path(current_user), :class=> "w3-bar-item w3-button", :style=>"color:blue" %>
+    <%= link_to 'Order Now', new_order_path, :class=> "w3-bar-item w3-button", :style=>"color:blue" %>
 
-    <%= link_to 'Orders ', user_orders_path(current_user), :class=> "w3-bar-item w3-button" %>
+    <%= link_to 'Orders ', orders_path, :class=> "w3-bar-item w3-button" %>
     <%= link_to 'Items ', items_path, :class=> "w3-bar-item w3-button" %>
     <% if current_user.admin %>
       <%= link_to 'Customers', customers_path, :class=> "w3-bar-item w3-button" %>
