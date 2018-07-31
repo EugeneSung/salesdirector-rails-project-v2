@@ -13,13 +13,16 @@ class ApplicationController < ActionController::Base
 
   def item_checker(invoice_item, item)
 
+    if invoice_item.object.item_id == item.id
 
-    if invoice_item.object.item_id == item.id 
-
-      true
+          true
     else
-      false
+
+          false
     end
+
+
+
 
   end
 

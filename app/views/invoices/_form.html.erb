@@ -44,6 +44,7 @@
 
           <%= invoice_item.hidden_field(:invoice_id, :value => invoice.id)%>
           <td>
+
           <%= invoice_item.number_field :shipped %></td>
           <%= invoice_item.hidden_field :quantity, :value => line_item.quantity %>
           <%= invoice_item.hidden_field :item_price, :value => line_item.item.price %>
@@ -51,7 +52,7 @@
 
 
         <% end %>
-    
+
 
 
       </tr>

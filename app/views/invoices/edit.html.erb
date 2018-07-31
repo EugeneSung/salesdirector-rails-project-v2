@@ -47,23 +47,23 @@
 
 
         <%= f.fields_for :invoice_items do |invoice_item| %>
-          <% if item_checker(invoice_item, line_item.item)%>
-          <%= invoice_item.hidden_field(:invoice_id, :value => @invoice.id)%>
-          <td>
-          <%= invoice_item.number_field :shipped %></td>
-          <%= invoice_item.hidden_field :quantity, :value => line_item.quantity %>
-          <%= invoice_item.hidden_field :item_price, :value => line_item.item.price %>
-          <%= invoice_item.hidden_field :item_id, :value => line_item.item.id %>
+          <% if item_checker(invoice_item, line_item.item) %>
+            <%= invoice_item.hidden_field(:invoice_id, :value => @invoice.id)%>
+            <td>
+              <%= invoice_item.number_field :shipped %></td>
+              <%= invoice_item.hidden_field :quantity, :value => line_item.quantity %>
+              <%= invoice_item.hidden_field :item_price, :value => line_item.item.price %>
+              <%= invoice_item.hidden_field :item_id, :value => line_item.item.id %>
+              <%end%>
+            <%end%>
 
-
-        <% end %>
-        <% end %>
+    <% end %>
 
 
 
       </tr>
-      <% end %>
-    <% end %>
+  <% end %>
+
         <tr><td>Orderd Total : $<%= @order.sum %></td> </tr>
 </table>
 

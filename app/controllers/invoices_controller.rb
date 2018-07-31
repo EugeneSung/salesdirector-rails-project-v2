@@ -28,6 +28,7 @@ class InvoicesController < ApplicationController
     @invoice = Invoice.find(params[:id])
   end
   def edit
+    @key_holder = []
     @order = Order.find_by(id: params[:order_id])
     @invoice_number = @invoice.invoice_num
   end

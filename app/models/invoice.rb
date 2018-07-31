@@ -4,7 +4,7 @@ class Invoice < ApplicationRecord
   belongs_to :order
 
   has_many :invoice_items
-  has_many :items, through: :invoice_items
+  has_many :items, -> { distinct }, through: :invoice_items
 
   accepts_nested_attributes_for :invoice_items, :allow_destroy => true
 
