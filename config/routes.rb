@@ -8,7 +8,6 @@ Rails.application.routes.draw do
       resources :invoices
     end
 
-
     post 'users/:id/disable' => 'users#disable', as: :disable
     post 'users/:id/enable' => 'users#enable', as: :enable
     resources :orders

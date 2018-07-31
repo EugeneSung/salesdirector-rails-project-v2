@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  helper_method :current_user, :require_login, :logged_in?, :current_employee, :current_user_type
+  helper_method :current_user, :require_login, :logged_in?, :current_employee, :current_user_type, :item_checker
 
   # def cart
   #   session[:cart] ||= []
@@ -10,6 +10,18 @@ class ApplicationController < ActionController::Base
 
   private
 
+
+  def item_checker(invoice_item, item)
+
+
+    if invoice_item.object.item_id == item.id 
+
+      true
+    else
+      false
+    end
+
+  end
 
    def current_user
       @current_user ||= User.find(session[:user_id]) if session[:user_id]

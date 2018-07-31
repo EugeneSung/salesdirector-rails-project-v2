@@ -6,6 +6,14 @@
 
 <%= render partial: "order", locals: {order: @order} %>
 <br />
+
+
 <%= link_to "Edit Order", edit_order_path(@order), :class=> "w3-bar-item w3-button"  %>
+
+
+<% if current_user.admin%>
+
+  <%= link_to "Create Invoice", new_order_invoice_path(@order), :class=> "w3-bar-item w3-button"  %>
+<%end%>
 </div>
 </div>

@@ -34,11 +34,10 @@ class OrdersController < ApplicationController
   end
   def create
 
-
-
     @order = Order.new(order_params)
 
     if(@order.valid? and @order.save)
+
 
           flash[:notice] = "Order created successfully"
 
@@ -52,6 +51,7 @@ class OrdersController < ApplicationController
   end
 
   def update
+  
     respond_to do |format|
       if @order.update(order_params)
         format.html { redirect_to @order, notice: 'Order was successfully updated.' }

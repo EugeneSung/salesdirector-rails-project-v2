@@ -48,6 +48,8 @@ ActiveRecord::Schema.define(version: 2018_07_27_141939) do
     t.integer "item_id"
     t.integer "quantity"
     t.integer "shipped"
+    t.integer "order_id"
+    t.integer "item_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

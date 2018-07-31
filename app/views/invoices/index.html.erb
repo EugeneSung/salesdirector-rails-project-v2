@@ -1,0 +1,26 @@
+
+<div class="w3-modal-content w3-animate-zoom" style="padding:32px">
+    <div class="w3-container w3-white w3-left">
+
+<h3>Invoice Lists</h3>
+<p>Click <b style="color:green">Invoice Number</b> to see more details</p>
+<% @invoices.each do |invoice| %>
+        <%if current_user.id == invoice.customer.user_id || current_user.id == invoice.employee.user_id %>
+
+        <li> <%= link_to "#{invoice.invoice_num}", order_invoice_path(invoice.order, invoice), {:class=> "w3-bar-item w3-button", :style=>"color:green; font-size:20px"}%>
+            Salesman: <%= invoice.employee.name%>, Customer: <%= invoice.customer.name%></li>
+
+
+        </li>
+
+
+        <br />
+        <%end%>
+
+<% end %>
+
+
+
+
+</div>
+</div>

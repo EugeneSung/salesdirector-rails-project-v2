@@ -1,0 +1,51 @@
+<ul>
+<p>
+  <li><h5> Invoice number: <%= invoice.invoice_num %></h5></li>
+
+  <li>Order Number: <%= order.order_num %> </li>
+  <li>Salesman Name: <%= order.employee.name%></li>
+  <li>Customer: <%= order.customer.name%></li><br />
+
+  <li>Ordered List</li>
+
+  <table style="border-spacing: 10px;">
+
+  <tr>
+    <th>Item Name</th>
+    <th>Ordered</th>
+    <th>Sum</th>
+    <th>Shipped</th>
+    <th>Sub Total</th>
+  </tr>
+
+
+
+    <tr class="spacer"><td></td></tr>
+      <% invoice.invoice_items.each do |invoice_item| %>
+        <% if !!invoice_item.quantity %>
+        <tr>
+
+          <td align="center">
+            <%= invoice_item.item.name %>
+          </td>
+          <td align="center">
+            <%= invoice_item.quantity %>
+          </td>
+          <td align="center">
+            $<%= invoice_item.item.price * invoice_item.quantity%>
+          </td>
+          <td align="center">
+             <%= invoice_item.shipped %>
+          </td>
+          <td align="center">
+            $<%= invoice_item.item.price * invoice_item.shipped%>
+          </td>
+
+        </tr>
+      <% end %>
+    <% end %>
+        <tr>
+          <td>Invoice Total : $<%= invoice.total %></td>
+
+        </tr>
+</table>

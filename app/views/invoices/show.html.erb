@@ -1,0 +1,16 @@
+<div class="w3-modal-content w3-animate-zoom" style="padding:32px">
+    <div class="w3-container w3-white w3-left">
+
+
+<h2>Invoice Info</h2>
+
+<%= render partial: "invoice", locals: {order: @order, invoice:  @invoice} %>
+<br />
+
+
+<%= link_to "Edit Invoice", edit_order_invoice_path(@order, @invoice), :class=> "w3-bar-item w3-button"  %>
+
+
+
+</div>
+</div>

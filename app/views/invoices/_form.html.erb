@@ -1,0 +1,65 @@
+<%= form_for(invoice) do |f| %>
+<p>
+  <h5><li> Invoice number: <%= @invoice_number %></li></h5>
+  <%= f.hidden_field(:invoice_num, :value => "#{@invoice_number}")%>
+  <%= f.hidden_field(:order_id, :value => "#{order.id}")%>
+  <%= f.hidden_field(:customer_id, :value => "#{order.customer_id}")%>
+  <%= f.hidden_field(:employee_id, :value => "#{order.employee_id}")%>
+  <li>Order Number: <%= order.order_num %> </li>
+  <li>Salesman Name: <%= order.employee.name%></li>
+  <li>Customer: <%= order.customer.name%></li><br />
+
+  <li>Ordered List</li>
+
+
+<table style="border-spacing: 10px;">
+
+  <tr>
+    <th>Item Name</th>
+    <th>Quantity</th>
+    <th>Sum</th>
+    <th>Shipped</th>
+</tr>
+
+
+
+<tr class="spacer"><td></td></tr>
+    <% order.line_items.each do |line_item| %>
+    <% if !!line_item.quantity %>
+      <tr>
+
+        <td align="center">
+          <%= line_item.item.name %>
+         </td>
+        <td align="center">
+          <%= line_item.quantity %>
+        </td>
+        <td align="center">
+          $<%= line_item.item.price * line_item.quantity%>
+        </td>
+
+
+
+        <%= f.fields_for :invoice_items do |invoice_item| %>
+
+          <%= invoice_item.hidden_field(:invoice_id, :value => invoice.id)%>
+          <td>
+          <%= invoice_item.number_field :shipped %></td>
+          <%= invoice_item.hidden_field :quantity, :value => line_item.quantity %>
+          <%= invoice_item.hidden_field :item_price, :value => line_item.item.price %>
+          <%= invoice_item.hidden_field :item_id, :value => line_item.item.id %>
+
+
+        <% end %>
+    
+
+
+      </tr>
+      <% end %>
+    <% end %>
+        <tr><td>Orderd Total : $<%= order.sum %></td> </tr>
+</table>
+
+<div><%= f.submit 'Submit', :class => 'btn btn-primary' %></div>
+
+  <% end %>
