@@ -32,6 +32,7 @@ class InvoicesController < ApplicationController
     @key_holder = []
     @order = Order.find_by(id: params[:order_id])
     @invoice_number = @invoice.invoice_num
+    reverse_shipped(@invoice)
   end
   def create
 
@@ -42,9 +43,9 @@ class InvoicesController < ApplicationController
 
   if(@invoice.valid? and @invoice.save)
 
-
-        flash[:notice] = "Invoice created successfully"
         after_shipped(@invoice)
+        flash[:notice] = "Invoice created successfully"
+
         redirect_to order_invoice_path(@order, @invoice)
 
     else
@@ -60,6 +61,7 @@ class InvoicesController < ApplicationController
 
     respond_to do |format|
       if @invoice.update(invoice_params)
+        after_shipped(@invoice)
         format.html { redirect_to order_invoice_path(@order, @invoice), notice: 'Invoice was successfully updated.' }
       else
         flash[:error] = @invoice.errors.full_messages.to_sentence
