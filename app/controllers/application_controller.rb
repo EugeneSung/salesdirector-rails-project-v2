@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  helper_method :current_user, :require_login, :logged_in?, :current_employee, :current_user_type, :item_checker
+  helper_method :current_user, :require_login, :logged_in?, :current_employee, :current_user_type, :item_checker, :after_shipped
 
   # def cart
   #   session[:cart] ||= []
@@ -9,6 +9,14 @@ class ApplicationController < ActionController::Base
 
 
   private
+  def after_shipped(invoice)
+    invoice.invoice_items.each do |invoice_item|
+
+      invoice_item.item.inventory = invoice_item.item.inventory - invoice_item.shipped
+      invoice_item.item.update_attribute(:inventory, invoice_item.item.inventory)
+    
+    end
+  end
 
   def item_checker(invoice_item, item)
 

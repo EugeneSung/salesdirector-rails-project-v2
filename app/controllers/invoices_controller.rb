@@ -4,6 +4,7 @@ class InvoicesController < ApplicationController
   before_action :set_order, only: [:create, :update]
   before_action :require_admin, only: [:destroy]
 
+
   def index
     @invoices = Invoice.all
   end
@@ -43,7 +44,7 @@ class InvoicesController < ApplicationController
 
 
         flash[:notice] = "Invoice created successfully"
-
+        after_shipped(@invoice)
         redirect_to order_invoice_path(@order, @invoice)
 
     else
