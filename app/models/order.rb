@@ -8,7 +8,7 @@ class Order < ApplicationRecord
   has_many :items, -> { distinct }, through: :line_items
   validates :employee_id, :customer_id, presence: true
 
-  accepts_nested_attributes_for :line_items, :allow_destroy => true
+  accepts_nested_attributes_for :line_items, :allow_destroy => true, :reject_if => lambda { |c| c[:quantity].blank? }
   scope :ordered_employees, -> { group(:employee_id)}
   scope :ordered_customers, -> { group(:customer_id)}
   scope :totals, -> { group(:order_total)}
