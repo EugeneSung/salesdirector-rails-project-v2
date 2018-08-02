@@ -9,23 +9,32 @@ class ApplicationController < ActionController::Base
 
 
   private
+
+
   def reverse_shipped(invoice)
     invoice.invoice_items.each do |invoice_item|
+
       item = Item.find(invoice_item.item_id)
       item.inventory = item.inventory + invoice_item.shipped
-      item.update_attribute(:inventory, item.inventory )
+      item.update_attribute(:inventory, item.inventory)
+
 
     end
+
   end
 
   def after_shipped(invoice)
+
+
+
     invoice.invoice_items.each do |invoice_item|
+
       item = Item.find(invoice_item.item_id)
       item.inventory = item.inventory - invoice_item.shipped
-      item.update_attribute(:inventory, item.inventory )
+      item.update_attribute(:inventory, item.inventory)
+
 
     end
-
 
   end
 

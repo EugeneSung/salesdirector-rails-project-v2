@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
     get '/orders/big_orders', to: 'orders#big_orders'
+    get '/invoice_items/most_ordered_item', to: 'invoice_items#most_ordered_item'
+
     resources :users
 
     resources :orders do

@@ -3,6 +3,12 @@ class InvoiceItem < ApplicationRecord
   belongs_to :invoice
 
 
+  scope :most_ordered_item, ->{
+    group(:item_id).order('SUM(shipped) desc').first
+
+
+  }
+
 
 
 end

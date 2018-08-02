@@ -9,6 +9,9 @@ class Invoice < ApplicationRecord
   accepts_nested_attributes_for :invoice_items, :allow_destroy => true
 
 
+
+
+
   def total
     result = 0
 
