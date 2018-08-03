@@ -2,9 +2,10 @@
 <p>
 
   <li><h5>Order Number: <%= order.order_num %></h5> </li>
-  <li>Salesman Name: <%= order.employee.name%></li>
-  <li>Customer: <%= order.customer.name%></li><br />
+<li>Salesman: <%if order.employee.name != "" %> <%= order.employee.name %> <%else%><%= order.employee.user.username %><%end%></li>
+<li>Customer: <%if order.customer.name != ""%> <%= order.customer.name %> <%else%><%= order.customer.user.username %><%end%></li>
 
+<br />
   <li>Order List</li>
 
 <table style="border-spacing: 12px;">

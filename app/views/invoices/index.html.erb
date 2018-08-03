@@ -8,7 +8,7 @@
         <%if current_user.id == invoice.customer.user_id || current_user.id == invoice.employee.user_id %>
 
         <li> <%= link_to "#{invoice.invoice_num}", order_invoice_path(invoice.order, invoice), {:class=> "w3-bar-item w3-button", :style=>"color:green; font-size:20px"}%>
-            Salesman: <%= invoice.employee.name%>, Customer: <%= invoice.customer.name%></li>
+            Salesman: <%if invoice.employee.name != "" %> <%= invoice.employee.name %> <%else%><%= invoice.employee.user.username %><%end%>, Customer: <%if invoice.customer.name != ""%> <%= invoice.customer.name %> <%else%><%= invoice.customer.user.username %><%end%></li>
 
 
         </li>

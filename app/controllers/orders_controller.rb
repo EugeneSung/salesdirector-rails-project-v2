@@ -27,12 +27,14 @@ class OrdersController < ApplicationController
          end
   end
   def show
+
     @order = Order.find(params[:id])
   end
   def edit
     @order_number = @order.order_num
   end
   def create
+
 
     @order = Order.new(order_params)
 
@@ -51,7 +53,7 @@ class OrdersController < ApplicationController
   end
 
   def update
-  
+
     respond_to do |format|
       if @order.update(order_params)
         format.html { redirect_to @order, notice: 'Order was successfully updated.' }

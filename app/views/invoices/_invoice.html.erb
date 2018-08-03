@@ -3,9 +3,9 @@
   <li><h5> Invoice number: <%= invoice.invoice_num %></h5></li>
 
   <li>Order Number: <%= order.order_num %> </li>
-  <li>Salesman Name: <%= order.employee.name%></li>
-  <li>Customer: <%= order.customer.name%></li><br />
-
+  <li>Salesman: <%if invoice.employee.name != "" %> <%= invoice.employee.name %> <%else%><%= invoice.employee.user.username %><%end%></li>
+  <li>Customer: <%if invoice.customer.name != ""%> <%= invoice.customer.name %> <%else%><%= invoice.customer.user.username %><%end%></li>
+  <br />
   <li>Ordered List</li>
 
   <table style="border-spacing: 12px;">

@@ -8,7 +8,7 @@
         <%if current_user.id == order.customer.user_id || current_user.id == order.employee.user_id %>
 
         <li> <%= link_to "#{order.order_num}", order_path(order), {:class=> "w3-bar-item w3-button", :style=>"color:green; font-size:20px"}%>
-            Salesman: <%= order.employee.name%>, Customer: <%= order.customer.name%></li>
+            Salesman: <%if order.employee.name != "" %> <%= order.employee.name %> <%else%><%= order.employee.user.username %><%end%>, Customer: <%if order.customer.name != ""%> <%= order.customer.name %> <%else%><%= order.customer.user.username %><%end%></li>
 
 
         </li>
