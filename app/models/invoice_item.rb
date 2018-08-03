@@ -4,7 +4,7 @@ class InvoiceItem < ApplicationRecord
 
 
   scope :most_ordered_item, ->{
-    group(:item_id).order('SUM(shipped) desc').first
+    group(:item_id).order('SUM(shipped) desc').limit(1);
 
 
   }

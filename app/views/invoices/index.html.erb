@@ -21,6 +21,8 @@
 
 
 
-
+<% if current_user.admin %>
+  <p><%= link_to "See the most ordered item", invoice_items_most_ordered_item_path, :class=> "w3-bar-item w3-button" %></p>
+<% end %>
 </div>
 </div>

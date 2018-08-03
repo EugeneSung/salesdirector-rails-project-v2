@@ -4,7 +4,7 @@
 
 <h3>Most Ordered Item</h3>
 <p>Click <b style="color:green">Item</b> to see more details</p>
-    <li><%= link_to "#{@item.name}", item_path(@item), {:class=> "w3-bar-item w3-button", :style=>"color:green; font-size:20px"} %>,  Ordered: <%=@most_ordered_item.shipped%></li>
+    <li><%= link_to "#{@item.name}", item_path(@item), {:class=> "w3-bar-item w3-button", :style=>"color:green; font-size:20px"} %>,  Ordered: <%=@most_ordered_item.first.shipped%></li>
 
 
 

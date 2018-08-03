@@ -38,7 +38,12 @@ item6 = Item.create(name: "Jewel6", price: 120, desc: "Nice", inventory: 110, it
 
 
 order1 = Order.create(order_num: "ORD000001", employee: employee_1, customer: customer_1, order_total: 81)
-order2 = Order.create(order_num: "ORD000002" , employee: employee_2, customer: customer_3, order_total: 871)
+order2 = Order.create(order_num: "ORD000002" , employee: employee_2, customer: customer_3, order_total: 671)
+invoice1 = Invoice.create(order: order1, invoice_num: "INV000001", employee: employee_1, customer: customer_1, order_total: 81, invoice_total: 81)
+invoice2 = Invoice.create(order: order2, invoice_num: "INV000002", employee: employee_2, customer: customer_3, order_total: 671, invoice_total: 671)
+
+
+
 
 line_item1 = LineItem.create(order: order1, item: item1, quantity: 1)
 line_item2 = LineItem.create(order: order1, item: item2, quantity: 1)
@@ -49,3 +54,14 @@ line_item5 = LineItem.create(order: order2, item: item6, quantity: 1)
 line_item6 = LineItem.create(order: order2, item: item2, quantity: 1)
 line_item7 = LineItem.create(order: order2, item: item4, quantity: 1)
 line_item8 = LineItem.create(order: order2, item: item5, quantity: 1)
+
+
+invoice_item1 = InvoiceItem.create(invoice: invoice1,  item: item1, quantity: 1, shipped: 1, item_price: 10)
+invoice_item2 = InvoiceItem.create(invoice: invoice1,  item: item2, quantity: 1, shipped: 1, item_price: 50)
+invoice_item3 = InvoiceItem.create(invoice: invoice1,  item: item3, quantity: 1, shipped: 1, item_price: 20)
+invoice_item4 = InvoiceItem.create(invoice: invoice1,  item: item4, quantity: 1, shipped: 1, item_price: 1)
+
+invoice_item5 = InvoiceItem.create(invoice: invoice2, item: item6, quantity: 1, shipped: 1, item_price: 120)
+invoice_item6 = InvoiceItem.create(invoice: invoice2, item: item2, quantity: 1, shipped: 1, item_price: 50)
+invoice_item7 = InvoiceItem.create(invoice: invoice2, item: item4, quantity: 1, shipped: 1, item_price: 1)
+invoice_item8 = InvoiceItem.create(invoice: invoice2, item: item5, quantity: 1, shipped: 1, item_price: 500)
