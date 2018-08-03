@@ -2,7 +2,7 @@
 <div class="w3-modal-content w3-animate-zoom" style="padding:32px">
     <div class="w3-container w3-white w3-left">
 
-<h3>Item Lists</h3>
+<h3>Order Lists</h3>
 <p>Click <b style="color:green">Order Number</b> to see more details</p>
 <% @orders.each do |order| %>
         <%if current_user.id == order.customer.user_id || current_user.id == order.employee.user_id %>
